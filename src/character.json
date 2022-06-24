@@ -1,0 +1,76 @@
+{
+    "characterData": {
+        "characterName": "",
+        "playerName" : "",
+        "characterSpecies" : "",
+        "characterCulture" : "",
+        "characterGender" : "",
+        "characterHomeland" : "",
+        "characterCareer" : "",
+        "characterSocialClass" : "",
+        "characterAge" : "", 
+        "characterHeight" : "",
+        "characterWeight" : "",
+        "characterHandedness" : "",
+        "characterDescription" : ""
+    },
+    "characterNotes": {
+
+    },
+    "characteristicsAndAttributes": {
+        "characteristicsPoints": "",
+        "characteristics": {
+            "strength" : {
+                "min" : "",
+                "max" : "",
+                "original" : "",
+                "value" : ""
+            },
+            "constitution" : {
+                "min" : "",
+                "max" : "",
+                "original" : "",
+                "value" : ""
+            },
+            "size" : {
+                "min" : "",
+                "max" : "",
+                "original" : "",
+                "value" : ""
+            },
+            "dexterity" : {
+                "min" : "",
+                "max" : "",
+                "original" : "",
+                "value" : ""
+            },
+            "intelligence" : {
+                "min" : "",
+                "max" : "",
+                "original" : "",
+                "value" : ""
+            },
+            "power" : {
+                "min" : "",
+                "max" : "",
+                "original" : "",
+                "value" : ""
+            },
+            "charisma" : {
+                "min" : "",
+                "max" : "",
+                "original" : "",
+                "value" : ""
+            }
+        },
+        "attributes" : {
+            "actionPoints": "",
+            "damageModifier": "",
+            "experienceModifier": "",
+            "healingRate": "",
+            "initiative": "",
+            "luckPoints": "",
+            "movementRate": ""
+        }
+    }
+}
