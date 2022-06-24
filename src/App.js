@@ -1,35 +1,12 @@
 import React from "react";
 import Characteristics from "./components/Characteristics";
+import characteristicsData from "./data/characteristicsData";
 
 export default function App() {
-    const characteristicParameters = {
-        characteristicsPoints: 75,
-        strengthMin: 3,
-        strengthMax: 18,
-        constitutionMin: 3,
-        constitutionMax: 18,
-        sizeMin: 8,
-        sizeMax: 18,
-        dexterityMin: 3,
-        dexterityMax: 18,
-        intelligenceMin: 8,
-        intelligenceMax: 18,
-        powerMin: 3,
-        powerMax: 18,
-        charismaMin: 3,
-        charismaMax: 18,
-    }
-    
-    const [characteristicValues, setCharacteristicValues] = React.useState({
-        // TODO: Change to array to extract individual characteristics as a component (characteristics.js is too long)
-        strengthValue: 9,
-        constitutionValue: 9,
-        sizeValue: 12,
-        dexterityValue: 9,
-        intelligenceValue: 12,
-        powerValue: 9,
-        charismaValue: 9,
-    });
+
+    const characteristicsPoints = 75;
+
+    const [characteristics, setCharacteristics] = React.useState(characteristicsData);
 
     const [attributes, setAttributes] = React.useState({
         actionPoints: 2,        
@@ -51,23 +28,25 @@ export default function App() {
 
     function handleCharacteristicsChange(event) {
         console.log(event);
-        setCharacteristicValues(prevCharacter => (
-            {
-                ...prevCharacter,
-                [event.target.name]: event.target.value
-                // strengthValue: 10
-            }
-        ));
+        setCharacteristics(prevCharacteristics => {
+            return prevCharacteristics.map(characteristic => {
+                if (characteristic.name === event.target.name) {
+                    return {...characteristic, value: event.target.value}
+                } else {
+                    return characteristic;
+                }
+            })
+        });
         console.log("handleCharacterChange");
     }
 
-    console.log(characteristicValues);
+    console.log(characteristics);
 
     return (
         <>
             <Characteristics 
-                characteristics={characteristicValues}
-                characteristicParameters={characteristicParameters}
+                characteristics={characteristics}
+                characteristicsPoints={characteristicsPoints}
                 handleCharacteristicsChange={handleCharacteristicsChange}
             />
         </>
