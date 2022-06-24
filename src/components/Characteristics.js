@@ -5,14 +5,14 @@ export default function Characteristics(props) {
 
     const [remainingPoints, setRemainingPoints] = 
         React.useState(
-            props.character.characteristicsPoints
-            - props.character.strengthValue
-            - props.character.constitutionValue
-            - props.character.sizeValue
-            - props.character.dexterityValue
-            - props.character.intelligenceValue
-            - props.character.powerValue
-            - props.character.charismaValue
+            props.characteristicParameters.characteristicsPoints
+            - props.characteristics.strengthValue
+            - props.characteristics.constitutionValue
+            - props.characteristics.sizeValue
+            - props.characteristics.dexterityValue
+            - props.characteristics.intelligenceValue
+            - props.characteristics.powerValue
+            - props.characteristics.charismaValue
         );
 
     function handleRemainingPointsChange(variation) {
@@ -33,7 +33,7 @@ export default function Characteristics(props) {
         if (newRemainingPoints < 0) {
             return;
         }
-        props.handleCharacterChange({
+        props.handleCharacteristicsChange({
             target: {
                 name: characteristicValueName,
                 value: newValue
@@ -44,9 +44,10 @@ export default function Characteristics(props) {
     }
 
     return (
-        <div className="form-container">
+        <div className="characteristics-container">
+            <h2>Characteristics</h2>
             <form className="form" onSubmit={handleSubmit}>
-                <div className="characteristic">
+                <div className="remaining">
                     <label 
                         htmlFor="remainingPoints"
                         className="remainingLabel"
@@ -68,7 +69,7 @@ export default function Characteristics(props) {
                         className="characteristicValue"
                         type="text" 
                         name="strengthValue"
-                        value={props.character.strengthValue}
+                        value={props.characteristics.strengthValue}
                         // onChange={props.handleCharacterChange}
                         readOnly 
                     />
@@ -78,9 +79,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "strengthValue", 
                             "-", 
-                            props.character.strengthValue,
-                            props.character.strengthMin,
-                            props.character.strengthMax
+                            props.characteristics.strengthValue,
+                            props.characteristics.strengthMin,
+                            props.characteristics.strengthMax
                         )}>-</button>
                     <button 
                         className="inc-dec-button"
@@ -88,9 +89,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "strengthValue", 
                             "+", 
-                            props.character.strengthValue,
-                            props.character.strengthMin,
-                            props.character.strengthMax
+                            props.characteristics.strengthValue,
+                            props.characteristics.strengthMin,
+                            props.characteristics.strengthMax
                         )}>+</button>
                 </div>
                 <div className="characteristic">
@@ -102,7 +103,7 @@ export default function Characteristics(props) {
                         className="characteristicValue"
                         type="text" 
                         name="constitutionValue"
-                        value={props.character.constitutionValue}
+                        value={props.characteristics.constitutionValue}
                         // onChange={props.handleCharacterChange}
                         readOnly 
                     />
@@ -112,9 +113,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "constitutionValue", 
                             "-", 
-                            props.character.constitutionValue,
-                            props.character.constitutionMin,
-                            props.character.constitutionMax
+                            props.characteristics.constitutionValue,
+                            props.characteristics.constitutionMin,
+                            props.characteristics.constitutionMax
                         )}>-</button>
                     <button 
                         className="inc-dec-button"
@@ -122,9 +123,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "constitutionValue", 
                             "+", 
-                            props.character.constitutionValue,
-                            props.character.constitutionMin,
-                            props.character.constitutionMax
+                            props.characteristics.constitutionValue,
+                            props.characteristics.constitutionMin,
+                            props.characteristics.constitutionMax
                         )}>+</button>
                 </div>
                 <div className="characteristic">
@@ -136,7 +137,7 @@ export default function Characteristics(props) {
                         className="characteristicValue"
                         type="text" 
                         name="sizeValue"
-                        value={props.character.sizeValue}
+                        value={props.characteristics.sizeValue}
                         // onChange={props.handleCharacterChange}
                         readOnly 
                     />
@@ -146,9 +147,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "sizeValue", 
                             "-", 
-                            props.character.sizeValue,
-                            props.character.sizeMin,
-                            props.character.sizeMax
+                            props.characteristics.sizeValue,
+                            props.characteristics.sizeMin,
+                            props.characteristics.sizeMax
                         )}>-</button>
                     <button 
                         className="inc-dec-button"
@@ -156,9 +157,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "sizeValue", 
                             "+", 
-                            props.character.sizeValue,
-                            props.character.sizeMin,
-                            props.character.sizeMax
+                            props.characteristics.sizeValue,
+                            props.characteristics.sizeMin,
+                            props.characteristics.sizeMax
                         )}>+</button>
                 </div>
                 <div className="characteristic">
@@ -170,7 +171,7 @@ export default function Characteristics(props) {
                         className="characteristicValue"
                         type="text" 
                         name="dexterityValue"
-                        value={props.character.dexterityValue}
+                        value={props.characteristics.dexterityValue}
                         // onChange={props.handleCharacterChange}
                         readOnly 
                     />
@@ -180,9 +181,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "dexterityValue", 
                             "-", 
-                            props.character.dexterityValue,
-                            props.character.dexterityMin,
-                            props.character.dexterityMax
+                            props.characteristics.dexterityValue,
+                            props.characteristics.dexterityMin,
+                            props.characteristics.dexterityMax
                         )}>-</button>
                     <button 
                         className="inc-dec-button"
@@ -190,9 +191,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "dexterityValue", 
                             "+", 
-                            props.character.dexterityValue,
-                            props.character.dexterityMin,
-                            props.character.dexterityMax
+                            props.characteristics.dexterityValue,
+                            props.characteristics.dexterityMin,
+                            props.characteristics.dexterityMax
                         )}>+</button>
                 </div>
                 <div className="characteristic">
@@ -204,7 +205,7 @@ export default function Characteristics(props) {
                         className="characteristicValue"
                         type="text" 
                         name="intelligenceValue"
-                        value={props.character.intelligenceValue}
+                        value={props.characteristics.intelligenceValue}
                         // onChange={props.handleCharacterChange}
                         readOnly 
                     />
@@ -214,9 +215,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "intelligenceValue", 
                             "-", 
-                            props.character.intelligenceValue,
-                            props.character.intelligenceMin,
-                            props.character.intelligenceMax
+                            props.characteristics.intelligenceValue,
+                            props.characteristics.intelligenceMin,
+                            props.characteristics.intelligenceMax
                         )}>-</button>
                     <button 
                         className="inc-dec-button"
@@ -224,9 +225,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "intelligenceValue", 
                             "+", 
-                            props.character.intelligenceValue,
-                            props.character.intelligenceMin,
-                            props.character.intelligenceMax
+                            props.characteristics.intelligenceValue,
+                            props.characteristics.intelligenceMin,
+                            props.characteristics.intelligenceMax
                         )}>+</button>
                 </div>
                 <div className="characteristic">
@@ -238,7 +239,7 @@ export default function Characteristics(props) {
                         className="characteristicValue"
                         type="text" 
                         name="powerValue"
-                        value={props.character.powerValue}
+                        value={props.characteristics.powerValue}
                         // onChange={props.handleCharacterChange}
                         readOnly 
                     />
@@ -248,9 +249,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "powerValue", 
                             "-", 
-                            props.character.powerValue,
-                            props.character.powerMin,
-                            props.character.powerMax
+                            props.characteristics.powerValue,
+                            props.characteristics.powerMin,
+                            props.characteristics.powerMax
                         )}>-</button>
                     <button 
                         className="inc-dec-button"
@@ -258,9 +259,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "powerValue", 
                             "+", 
-                            props.character.powerValue,
-                            props.character.powerMin,
-                            props.character.powerMax
+                            props.characteristics.powerValue,
+                            props.characteristics.powerMin,
+                            props.characteristics.powerMax
                         )}>+</button>
                 </div>
                 <div className="characteristic">
@@ -272,7 +273,7 @@ export default function Characteristics(props) {
                         className="characteristicValue"
                         type="text" 
                         name="charismaValue"
-                        value={props.character.charismaValue}
+                        value={props.characteristics.charismaValue}
                         // onChange={props.handleCharacterChange}
                         readOnly 
                     />
@@ -282,9 +283,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "charismaValue", 
                             "-", 
-                            props.character.charismaValue,
-                            props.character.charismaMin,
-                            props.character.charismaMax
+                            props.characteristics.charismaValue,
+                            props.characteristics.charismaMin,
+                            props.characteristics.charismaMax
                         )}>-</button>
                     <button 
                         className="inc-dec-button"
@@ -292,9 +293,9 @@ export default function Characteristics(props) {
                         onClick={() => incDecCharacteristic(
                             "charismaValue", 
                             "+", 
-                            props.character.charismaValue,
-                            props.character.charismaMin,
-                            props.character.charismaMax
+                            props.characteristics.charismaValue,
+                            props.characteristics.charismaMin,
+                            props.characteristics.charismaMax
                         )}>+</button>
                 </div>
             </form>
