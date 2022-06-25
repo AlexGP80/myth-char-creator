@@ -19,7 +19,6 @@ export default function Characteristics(props) {
     }
 
     function incDecCharacteristic(characteristicName, operation, prevValue, min, max) {
-        console.log(characteristicName, operation, prevValue, min, max);
         const variation = operation === "+" ? 1 : -1;
         const newValue = prevValue + variation;
         if (newValue > max || newValue < min) {
@@ -51,7 +50,6 @@ export default function Characteristics(props) {
                                     />
             );
 
-    console.log(characteristicsElements);
 
     return (
         <div className="characteristics-container">
