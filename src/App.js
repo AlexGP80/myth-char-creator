@@ -18,6 +18,8 @@ export default function App() {
 
     const [useHouseRuledWeight, setUseHouseRuledWeight] = React.useState(false);
 
+    const [characteristicRollsCount, setCharacteristicRollsCount] = React.useState(0);
+
     function toggleUseHouseRuledWeightChange() {
         setUseHouseRuledWeight(prevWeightUsage => !prevWeightUsage);
     }
@@ -72,12 +74,18 @@ export default function App() {
         setAttributes(newAttributesData);
     }, [frame, characteristics]);
 
+    function addCharacteristicsRoll() {
+        setCharacteristicRollsCount(prevCount => prevCount + 1);
+    }
+
     return (
         <div className="app-container">
             <Characteristics 
                 characteristics={characteristics}
                 characteristicsPoints={characteristicsPoints}
                 handleCharacteristicsChange={handleCharacteristicsChange}
+                characteristicRollsCount = {characteristicRollsCount}
+                addCharacteristicsRoll = {addCharacteristicsRoll}
             />
             <Attributes 
                 attributes={attributes}

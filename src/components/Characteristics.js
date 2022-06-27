@@ -79,6 +79,7 @@ export default function Characteristics(props) {
                 }
             });
         });
+        props.addCharacteristicsRoll();
     }
 
 
