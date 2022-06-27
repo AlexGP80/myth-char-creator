@@ -32,6 +32,10 @@ Points: 80 -> distribute 80 points amongst the characteristics.
 Roll: Standard -> Roll 3d6 for STR, CON, DEX, POW & CHA, roll 2d6+6 for SIZ & INT.
 Manual -> set the characteristics values manually."
         >
+          {
+            //FIXME: Unicode information icon does not render on mobile. Emoji shows just fine, but see below
+            //FIXME: No "easy" tooltip for mobile phone :(
+          }
           &#128712;
         </span>
         &nbsp;

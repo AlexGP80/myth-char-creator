@@ -24,6 +24,10 @@ export default function Attributes(props) {
         className="info"
         title="Homebrewed rule with no frames, weight is computed from SIZ, STR and CON values in accordance with Corpulence Index"
       >
+        {
+          //FIXME: Unicode information icon does not render on mobile. Emoji shows just fine, but see below
+          //FIXME: No "easy" tooltip for mobile phone :(
+        }
         &#128712;
       </span>
       &nbsp;
