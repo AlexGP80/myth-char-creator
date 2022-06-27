@@ -118,6 +118,7 @@ export default function App() {
         
         let newAttributesData = [...attributesData];
 
+        //TODO: Refactor this smelly block of code :)
         newAttributesData[0].value = attributesLogic.getActionPoints(int, dex);
         newAttributesData[1].value = attributesLogic.getDamageModifier(str, siz);
         newAttributesData[2].value = attributesLogic.getExperienceModifier(cha);
