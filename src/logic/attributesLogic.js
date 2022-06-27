@@ -1,4 +1,4 @@
-const weight = [
+const houseRuledWeight = [
     ["40-43", "44-46", "47-49", "50-52", "53-55", "56-58", "59-62"],
     ["44-47", "48-51", "52-55", "56-58", "59-62", "63-66", "67-69"],
     ["48-51", "52-55", "56-59", "60-63", "64-67", "68-71", "72-75"],
@@ -12,6 +12,20 @@ const weight = [
     ["93-99", "100-107", "108-115", "116-123", "124-131", "132-139", "140-146"]
 ];
 
+const rawWeight = [
+    ["36-40", "50-56", "64-72"],
+    ["41-45", "57-63", "73-81"],
+    ["46-50", "64-70", "82-90"],
+    ["51-55", "71-77", "91-99"],
+    ["56-60", "78-84", "100-108"],
+    ["61-65", "85-91", "109-117"],
+    ["66-70", "92-98", "118-126"],
+    ["71-75", "99-105", "127-135"],
+    ["76-80", "106-112", "136-144"],
+    ["81-85", "113-119", "145-153"],
+    ["86-90", "120-126", "154-162"]
+];
+
 function getSizeIndex(size) {
     return size - 8;
 }
@@ -20,11 +34,20 @@ function getStrConIndex(strength, constitution) {
     return Math.floor((strength + constitution - 1) / 5) - 1;
 }
 
-export function getWeight(size, strength, constitution) {
-    const sizeIndex = getSizeIndex(size);
-    const strConIndex = getStrConIndex(strength, constitution);
+function getFrameIndex(frame) {
+    if (frame === "Lithe") return 0;
+    if (frame === "Heavy") return 2;
+    return 1;
+}
 
-    return weight[sizeIndex][strConIndex];
+export function getWeight(size, strength, constitution, frame) {
+    const sizeIndex = getSizeIndex(size);
+    if (frame === "") {
+        const strConIndex = getStrConIndex(strength, constitution);
+        return houseRuledWeight[sizeIndex][strConIndex];
+    } else {
+        return rawWeight[sizeIndex][getFrameIndex(frame)];
+    }
 }
 
 export function getHeight(size) {

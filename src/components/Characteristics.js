@@ -5,9 +5,6 @@ import * as rollsLogic from "../logic/rollsLogic";
 
 export default function Characteristics(props) {
 
-    console.log(rollsLogic.roll("3d6"));
-    console.log(rollsLogic.roll("2d6+6"));
-
     const [generationType, setGenerationType] = React.useState("points75");
 
     const [characteristicsPoints, setCharacteristicPoints] = React.useState(75);
@@ -33,9 +30,6 @@ export default function Characteristics(props) {
             characteristicsPoints
             - props.characteristics.reduce((accum, curr) => accum + curr.value, 0)
         );
-
-    console.log(characteristicsPoints);
-    console.log(remainingPoints);
 
     function handleRemainingPointsChange(variation) {
         setRemainingPoints(prevRemainingPoints => prevRemainingPoints + variation);
@@ -103,11 +97,8 @@ export default function Characteristics(props) {
 
 
     function handleGenTypeChange(event) {
-        // console.log(event);
         setGenerationType(event.target.value);
     }
-
-    console.log(generationType);
 
     return (
         <div className="characteristics-container">

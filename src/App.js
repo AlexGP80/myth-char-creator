@@ -13,9 +13,20 @@ export default function App() {
     const [characteristics, setCharacteristics] = React.useState(characteristicsData);
 
     const [attributes, setAttributes] = React.useState(attributesData);
+
+    const [frame, setFrame] = React.useState("Medium");
+
+    const [useHouseRuledWeight, setUseHouseRuledWeight] = React.useState(false);
+
+    function toggleUseHouseRuledWeightChange() {
+        setUseHouseRuledWeight(prevWeightUsage => !prevWeightUsage);
+    }
+
+    React.useEffect(() => {
+        useHouseRuledWeight? setFrame("") : setFrame("Medium");
+    }
+    , [useHouseRuledWeight]);
  
-
-
     function handleCharacteristicsChange(event) {
         setCharacteristics(prevCharacteristics => {
             return prevCharacteristics.map(characteristic => {
@@ -32,7 +43,6 @@ export default function App() {
     React.useEffect(() => {
         const [str, con, siz, dex, int, pow, cha] 
             = characteristics.map(chr => chr.value);
-        // console.log(str, con, siz, dex, int, pow, cha);
         
         let newAttributesData = [...attributesData];
 
@@ -41,7 +51,6 @@ export default function App() {
         newAttributesData[2].value = attributesLogic.getExperienceModifier(cha);
         newAttributesData[3].value = attributesLogic.getHealingRate(con);
         newAttributesData[4].value = attributesLogic.getHeight(siz);
-        newAttributesData[5].value = attributesLogic.getWeight(siz, str, con);
         newAttributesData[6].value = attributesLogic.getLegsHitPoints(con, siz);
         newAttributesData[7].value = attributesLogic.getAbdomenHitPoints(con, siz);
         newAttributesData[8].value = attributesLogic.getChestHitPoints(con, siz);
@@ -55,6 +64,14 @@ export default function App() {
         setAttributes(newAttributesData);
     }, [characteristics]);
 
+    React.useEffect(() => {
+        const [str, con, siz] 
+            = characteristics.map(chr => chr.value);
+        let newAttributesData = [...attributesData];
+        newAttributesData[5].value = attributesLogic.getWeight(siz, str, con, frame);
+        setAttributes(newAttributesData);
+    }, [frame, characteristics]);
+
     return (
         <div className="app-container">
             <Characteristics 
@@ -64,6 +81,10 @@ export default function App() {
             />
             <Attributes 
                 attributes={attributes}
+                frame={frame}
+                setFrame={setFrame}
+                useHouseRuledWeight={useHouseRuledWeight}
+                toggleUseHouseRuledWeightChange={toggleUseHouseRuledWeightChange}
             />
         </div>
     );

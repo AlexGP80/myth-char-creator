@@ -58,7 +58,7 @@ const attributesData = [
     {
         name: "Movement Rate",
         value: 6
-    }
+    },
 ];
 
 
