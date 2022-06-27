@@ -90,8 +90,8 @@ export default function App() {
         value: rollsLogic.roll(chrs.roll),
       }));
       setCharacteristics(chrsData);
+      addCharacteristicsRoll();
     }
-    addCharacteristicsRoll();
   }, [generationType]);
 
   function rollCharacteristics() {
@@ -110,10 +110,7 @@ export default function App() {
     if (generationType === "stdRoll") {
       if (
         !window.confirm(
-          `Changing the generation method would reset 
-          the Characteristics values to their defaults. 
-          Current values will be lost. Are you sure you 
-          want to proceed?`
+          "Changing the generation method would reset the Characteristics values to their defaults. Current values will be lost. Are you sure you want to proceed?"
         )
       ) {
         return;
