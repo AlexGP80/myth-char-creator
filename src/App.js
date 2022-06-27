@@ -4,11 +4,10 @@ import Characteristics from "./components/Characteristics";
 import characteristicsData from "./data/characteristicsData";
 import attributesData from "./data/attributesData";
 import * as attributesLogic from "./logic/attributesLogic";
+import * as rollsLogic from "./logic/rollsLogic";
 import "./styles/app.css";
 
 export default function App() {
-
-    const characteristicsPoints = 75;
 
     const [characteristics, setCharacteristics] = React.useState(characteristicsData);
 
@@ -19,6 +18,77 @@ export default function App() {
     const [useHouseRuledWeight, setUseHouseRuledWeight] = React.useState(false);
 
     const [characteristicRollsCount, setCharacteristicRollsCount] = React.useState(0);
+
+    const [generationType, setGenerationType] = React.useState("points75");
+
+    const [characteristicsPoints, setCharacteristicPoints] = React.useState(75);
+
+    React.useEffect(() => {
+        // Set characteristics points
+        if (generationType === "points75") {
+            setCharacteristicPoints(75);
+        } else if (generationType === "points80") {
+            setCharacteristicPoints(80);
+        } else if (generationType === "manual") { 
+            setCharacteristicPoints(999);
+        } else {
+            setCharacteristicPoints(0);
+        }
+        // Reset characteristics
+        setCharacteristics(characteristicsData);
+    }, [generationType]);
+
+    React.useEffect(() => {
+        setRemainingPoints(characteristicsPoints
+            - characteristics.reduce((accum, curr) => accum + curr.value, 0));
+    }, [characteristicsPoints, characteristics]);
+
+    const [remainingPoints, setRemainingPoints] = 
+        React.useState(
+            characteristicsPoints
+            - characteristics.reduce((accum, curr) => accum + curr.value, 0)
+        );
+
+    function handleRemainingPointsChange(variation) {
+        setRemainingPoints(prevRemainingPoints => prevRemainingPoints + variation);
+    }
+
+    function incDecCharacteristic(characteristicName, operation, prevValue, min, max) {
+        const variation = operation === "+" ? 1 : -1;
+        const newValue = prevValue + variation;
+        if (newValue > max || newValue < min) {
+            return;
+        }
+        const newRemainingPoints = remainingPoints - variation;
+        if (newRemainingPoints < 0) {
+            return;
+        }
+        handleCharacteristicsChange({
+            target: {
+                name: characteristicName,
+                value: newValue
+            }
+        });
+
+        handleRemainingPointsChange(-variation);
+    }
+
+    function rollCharacteristics() {
+        characteristics.forEach(characteristic => {
+            handleCharacteristicsChange({
+                target: {
+                    name: characteristic.name,
+                    value: rollsLogic.roll(characteristic.roll)
+                }
+            });
+        });
+        addCharacteristicsRoll();
+    }
+
+    function handleGenTypeChange(event) {
+        setGenerationType(event.target.value);
+    }
+
 
     function toggleUseHouseRuledWeightChange() {
         setUseHouseRuledWeight(prevWeightUsage => !prevWeightUsage);
@@ -86,6 +156,11 @@ export default function App() {
                 handleCharacteristicsChange={handleCharacteristicsChange}
                 characteristicRollsCount = {characteristicRollsCount}
                 addCharacteristicsRoll = {addCharacteristicsRoll}
+                incDecCharacteristic = {incDecCharacteristic}
+                generationType = {generationType}
+                handleGenTypeChange = {handleGenTypeChange}
+                remainingPoints = {remainingPoints}
+                rollCharacteristics = {rollCharacteristics}
             />
             <Attributes 
                 attributes={attributes}

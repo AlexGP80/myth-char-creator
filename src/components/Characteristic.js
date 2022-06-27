@@ -15,7 +15,7 @@ export default function Characteristic(props) {
                 value={props.value}
                 readOnly 
             />
-            {props.generationType.startsWith("points") &&
+            {(props.generationType.startsWith("points") || props.generationType==="manual") &&
             <button 
                 className="inc-dec-button"
                 name={`dec-${props.name}`}
@@ -26,7 +26,7 @@ export default function Characteristic(props) {
                     props.min,
                     props.max
                 )}>-</button>}
-            {props.generationType.startsWith("points") &&
+            {(props.generationType.startsWith("points") || props.generationType==="manual") &&
             <button 
                 className="inc-dec-button"
                 name={`inc-${props.name}`}
