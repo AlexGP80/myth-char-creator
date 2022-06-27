@@ -1,4 +1,8 @@
 .app-container {
-    display: flex;
-    align-items: baseline;
+  display: flex;
+  align-items: baseline;
+}
+
+.info {
+  cursor: help;
 }
