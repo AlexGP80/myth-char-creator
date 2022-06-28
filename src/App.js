@@ -24,6 +24,8 @@ export default function App() {
 
   const [characteristicsPoints, setCharacteristicPoints] = React.useState(75);
 
+  const [cultureType, setCultureType] = React.useState("Primitive");
+
   React.useEffect(() => {
     // Set characteristics points
     if (generationType === "points75") {
@@ -182,6 +184,10 @@ export default function App() {
     setCharacteristicRollsCount((prevCount) => prevCount + 1);
   }
 
+  function handleCultureChange(event) {
+    setCultureType(event.target.value);
+  }
+
   return (
     <div className="app-container">
       <Characteristics
@@ -203,6 +209,21 @@ export default function App() {
         useHouseRuledWeight={useHouseRuledWeight}
         toggleUseHouseRuledWeightChange={toggleUseHouseRuledWeightChange}
       />
+      <div className="Culture">
+        <h2>Culture</h2>
+        <label htmlFor="cultureType">Culture&nbsp;</label>
+        <select
+          id="cultureType"
+          name="cultureType"
+          value={cultureType}
+          onChange={handleCultureChange}
+        >
+          <option value="Primitive">Primitive</option>
+          <option value="Nomad">Nomad</option>
+          <option value="Barbarian">Barbarian</option>
+          <option value="Civilised">Civilised</option>
+        </select>
+      </div>
     </div>
   );
 }
