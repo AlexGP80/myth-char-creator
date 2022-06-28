@@ -1,57 +1,51 @@
-
 .characteristics-container {
-    width: 190px;
+  width: 190px;
 }
 .characteristic {
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 4px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
 }
 
 .remaining {
-    display: flex;
-    align-items: center;
-    width: 136px;
+  display: flex;
+  align-items: center;
+  width: 136px;
 }
 
 .remainingLabel {
-    font-weight: bold;
-    font-size: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .characteristicLabel {
-    font-weight: bold;
-    margin-right: auto;
-    font-size: 1rem;
+  font-weight: bold;
+  margin-right: auto;
+  font-size: 1rem;
 }
 
 .remainingValue {
-    border: none;
-    font-size: 1.2rem;
-    text-align: center;
-    width: 30px;
+  border: none;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 30px;
 }
 
 .characteristicValue {
-    width: 30px;
-    text-align: center;
-    font-size: 1.2rem;
-    margin-right: 0px;
-    border: none;
+  width: 30px;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-right: 0px;
+  border: none;
 }
 
 .inc-dec-button {
-    width: 25px;
-    height: 25px;
-    margin: 0 2px 0 0;
-    padding: 0;
-    background-color: #776666;
-    color: #eeeeee;
-    border: none;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 25px;
+  height: 25px;
+  margin: 0 2px 0 0;
+  padding: 0;
+  font-size: 1rem;
+  cursor: pointer;
 }
